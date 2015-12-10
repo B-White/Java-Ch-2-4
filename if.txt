@@ -1,0 +1,55 @@
+public class BankCharges 
+{
+	
+	private double accountBalance;
+	private int checksWritten;
+	private int bankFees=10;
+	private double endingBalance;
+	
+	public BankCharges(double accountBal, int checksUsed)
+	{
+		accountBalance = accountBal;
+		checksWritten = checksUsed;
+	}
+	
+	public double getEndingBalance() {
+		
+		double balanceFee = 15.00; // this is only if balance falls beneath 400 but before any other fees
+		double checkFee1 = .10;// only applied if less than 20 checks used but for each check
+		double checkFee2 = .08;// only applied for 20-39 checks used but for each check
+		double checkFee3 = .06;// only applied for each check 40-59
+		double checkFee4 = .04;// only applied for each check 60 and up
+		double totalCheckFees;
+		
+		
+		if (accountBalance <= 399)
+		{
+			bankFees += balanceFee;
+			endingBalance = accountBalance - bankFees;
+		}
+		else{}
+		if (checksWritten <= 19)
+		{
+			totalCheckFees = checkFee1 * checksWritten;
+			endingBalance = (accountBalance - totalCheckFees) - bankFees;
+			
+		}
+		if (checksWritten <= 39)
+		{
+			totalCheckFees = checkFee2 * checksWritten;
+			endingBalance = (accountBalance - totalCheckFees) - bankFees;
+		}
+		if (checksWritten <= 59)
+		{
+			totalCheckFees = checkFee3 * checksWritten;
+			endingBalance = (accountBalance - totalCheckFees) - bankFees;
+		}
+		if (checksWritten >= 60)
+		{
+			totalCheckFees = checkFee4 * checksWritten;
+			endingBalance = (accountBalance - totalCheckFees) - bankFees;
+		}
+		return endingBalance;
+	}
+	
+}

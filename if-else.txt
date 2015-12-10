@@ -1,0 +1,33 @@
+public class FatGram 
+{
+	private int calories;
+	private int fatGrams;
+	private double percentage;
+
+	public FatGram(int inputCalories, int inputFatGrams)
+	{
+		calories = inputCalories;
+		fatGrams = inputFatGrams;
+	}
+	
+	public double getPercentage()
+	{
+		double percentageTotal;
+		double caloriesFat;
+		caloriesFat = fatGrams * 9;
+		
+		percentageTotal = caloriesFat / calories;
+		percentage = percentageTotal * 100;
+		
+		if (caloriesFat < calories)
+		{
+			System.out.printf("Your percentage of calories from fat is: %.1f", percentage);
+		}
+		else
+		{
+			System.out.println("Error Calories from fat can not be higher than" +
+							   " total number of calories.");
+		}
+		return percentage;
+	}
+}

@@ -1,0 +1,53 @@
+public class ISP 
+{
+	private char packageBought;
+	private int mbUsed;
+	
+	private double totalCharges;
+	
+	public ISP(char boughtPackage, int usedMB)
+	{
+		packageBought = boughtPackage;
+		mbUsed = usedMB;
+	}
+
+	public double getTotalCharges() 
+	{
+		if (packageBought == 'a' || packageBought == 'A')
+		{
+			if (mbUsed <= 1000)
+			{
+				totalCharges = 49.99;
+			}
+			else
+			{
+				if (mbUsed >= 1000)
+				{
+					totalCharges = 49.99 + ((mbUsed - 1000) /50)* .40;
+				}
+			}
+		}
+		
+		if (packageBought == 'b' || packageBought == 'B')
+		{
+			if (mbUsed <= 3000)
+			{
+				totalCharges = 69.99;
+			}
+			else
+			{
+				if (mbUsed > 3000)
+				{
+					totalCharges = 69.99 + ((mbUsed - 3000)/50) * .30;
+				}
+			}
+		}
+		
+		if (packageBought == 'c' || packageBought == 'C')
+		{
+			totalCharges = 79.99;			
+		}
+		return totalCharges;
+	}
+	
+}

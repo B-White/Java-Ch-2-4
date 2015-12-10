@@ -1,0 +1,67 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class ISPDemo 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner typed = new Scanner(System.in);
+		String input;
+		char subscription;
+		int mbUsedAmount;
+		DecimalFormat formatter = new DecimalFormat("$###.##");
+		double possibleSavings;
+		double possibleSavings2;
+				
+		System.out.println("What subscription package did you buy??? A, B, or C");
+		input = typed.nextLine();
+		subscription = input.charAt(0);
+		
+		System.out.println("How many MB did you use this month???");
+		mbUsedAmount = typed.nextInt();
+		
+		ISP userInput = new ISP(subscription, mbUsedAmount);
+		
+		typed.close();
+		
+		System.out.println("Your total for the month is: " + formatter.format(userInput.getTotalCharges()));
+		
+		if (subscription == 'a' || subscription == 'A')
+		{
+			if (userInput.getTotalCharges() == 49.99)
+			{
+				System.out.print("No Savings ");
+			}
+			else
+			{
+				if (userInput.getTotalCharges() > 49.99)
+				{
+					
+					possibleSavings = userInput.getTotalCharges() - 69.99 + (((mbUsedAmount - 3000) / 50)*.4);
+					possibleSavings2 = userInput.getTotalCharges() - 79.99;
+					
+					System.out.println("\nSavings if package B is bought: " + formatter.format(possibleSavings));
+					System.out.println("\nSavings if package C is bought: " + formatter.format(possibleSavings2));
+				}
+			}
+		}
+		
+		if (subscription == 'b' || subscription == 'B')
+		{
+			if (userInput.getTotalCharges() == 69.99)
+			{
+				System.out.print("No Savings ");
+			}
+			else
+			{
+				if (userInput.getTotalCharges() > 69.99)
+				{
+					possibleSavings2 = userInput.getTotalCharges() - 79.99;
+					
+					System.out.println("\nSavings if package C is bought: " + formatter.format(possibleSavings2));
+				}
+			}
+		}
+	}
+}
